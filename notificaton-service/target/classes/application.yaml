@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: notification-service
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
+      - org.springframework.boot.kafka.autoconfigure.KafkaAutoConfiguration
+      - org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration
+
+app:
+  use-kafka: ${KAFKA_ENABLED:false}
+
+server:
+  port: 8084
+
+management:
+  health:
+    kafka:
+      enabled: false
+    mail:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,info

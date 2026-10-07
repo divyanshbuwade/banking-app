@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: fraud-detection-service
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
+      - org.springframework.boot.kafka.autoconfigure.KafkaAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.data.redis.autoconfigure.RedisAutoConfiguration
+
+app:
+  use-kafka: ${KAFKA_ENABLED:false}
+
+server:
+  port: 8085
+
+fraud:
+  max-transaction-per-minute: 5
+  suspicious-amount-multiplier: 3.0
+  max-balance-percentage: 0.9
+
+account:
+  service:
+    url: http://localhost:8081
+
+management:
+  health:
+    kafka:
+      enabled: false
+    redis:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,info

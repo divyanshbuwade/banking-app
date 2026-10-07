@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: api-gateway
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.data.redis.autoconfigure.RedisReactiveAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration
+  cloud:
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOriginPatterns: "*"
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - OPTIONS
+                allowedHeaders: "*"
+          routes:
+            - id: account-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/v1/accounts/**
+
+            - id: transaction-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/v1/transactions/**
+
+            - id: payment-service
+              uri: http://localhost:8083
+              predicates:
+                - Path=/api/v1/payments/**
+
+            - id: notification-service
+              uri: http://localhost:8084
+              predicates:
+                - Path=/api/v1/notifications/**
+
+            - id: fraud-detection-service
+              uri: http://localhost:8085
+              predicates:
+                - Path=/api/v1/fraud/**
+
+server:
+  port: 8080
+
+management:
+  health:
+    redis:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway

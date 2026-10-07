@@ -1,0 +1,198 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.banking:api-gateway >-----------------------
+[INFO] Building  0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ api-gateway ---
+[INFO] Deleting /home/tunnu/stark-labs/Microservice Banking app/api-gateway/target
+[INFO] 
+[INFO] >>> spring-boot:4.1.1:run (default-cli) > test-compile @ api-gateway >>>
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ api-gateway ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ api-gateway ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 2 source files with javac [debug parameters release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ api-gateway ---
+[INFO] skip non existing resourceDirectory /home/tunnu/stark-labs/Microservice Banking app/api-gateway/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ api-gateway ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target/test-classes
+[INFO] 
+[INFO] <<< spring-boot:4.1.1:run (default-cli) < test-compile @ api-gateway <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:4.1.1:run (default-cli) @ api-gateway ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-28T17:04:00.970+05:30  INFO 31891 --- [api-gateway] [           main] c.b.apigateway.ApiGatewayApplication     : Starting ApiGatewayApplication using Java 21.0.2 with PID 31891 (/home/tunnu/stark-labs/Microservice Banking app/api-gateway/target/classes started by tunnu in /home/tunnu/stark-labs/Microservice Banking app/api-gateway)
+2026-09-28T17:04:00.973+05:30  INFO 31891 --- [api-gateway] [           main] c.b.apigateway.ApiGatewayApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-09-28T17:04:01.748+05:30  INFO 31891 --- [api-gateway] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-28T17:04:01.751+05:30  INFO 31891 --- [api-gateway] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-28T17:04:01.783+05:30  INFO 31891 --- [api-gateway] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2026-09-28T17:04:02.038+05:30  INFO 31891 --- [api-gateway] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=015baa2b-2e29-3caa-b0f2-3fa28b49b215
+2026-09-28T17:04:02.860+05:30  WARN 31891 --- [api-gateway] [           main] o.h.v.i.m.a.CascadingMetaDataBuilder     : HV000271: Using `@Valid` on a container (java.util.List) is deprecated. You should apply the annotation on the type argument(s). Affected element: routes
+2026-09-28T17:04:02.898+05:30  WARN 31891 --- [api-gateway] [           main] o.h.v.i.m.a.CascadingMetaDataBuilder     : HV000271: Using `@Valid` on a container (java.util.List) is deprecated. You should apply the annotation on the type argument(s). Affected element: predicates
+2026-09-28T17:04:02.898+05:30  WARN 31891 --- [api-gateway] [           main] o.h.v.i.m.a.CascadingMetaDataBuilder     : HV000271: Using `@Valid` on a container (java.util.List) is deprecated. You should apply the annotation on the type argument(s). Affected element: filters
+2026-09-28T17:04:02.973+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2026-09-28T17:04:02.973+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2026-09-28T17:04:02.973+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2026-09-28T17:04:02.973+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2026-09-28T17:04:02.973+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2026-09-28T17:04:02.973+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2026-09-28T17:04:02.973+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Version]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2026-09-28T17:04:02.974+05:30  INFO 31891 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-09-28T17:04:03.176+05:30  INFO 31891 --- [api-gateway] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-28T17:04:05.507+05:30  WARN 31891 --- [api-gateway] [           main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-09-28T17:04:05.529+05:30  INFO 31891 --- [a2026-09-28T17:04:40.340+05:30 ERROR 31425 --- [api-gateway] [or-http-epoll-7] b.w.a.e.AbstractErrorWebExceptionHandler : [7f8df0d0-3]  500 Server Error for HTTP POST "/api/v1/transactions/transfer"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed with error(-111): Connection refused: localhost/127.0.0.1:8082
+	Suppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter@553fbe94
+	*__checkpoint ⇢ HTTP POST "/api/v1/transactions/transfer" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed with error(-111): Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:361) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:772) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:749) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:616) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.handle(AbstractEpollChannel.java:477) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler$DefaultEpollIoRegistration.handle(EpollIoHandler.java:349) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.processReady(EpollIoHandler.java:548) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.run(EpollIoHandler.java:491) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1204) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-09-28T17:04:51.987+05:30 ERROR 31425 --- [api-gateway] [or-http-epoll-1] b.w.a.e.AbstractErrorWebExceptionHandler : [0439dd81-6]  500 Server Error for HTTP POST "/api/v1/transactions/transfer"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed with error(-111): Connection refused: localhost/127.0.0.1:8082
+	Suppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter@553fbe94
+	*__checkpoint ⇢ HTTP POST "/api/v1/transactions/transfer" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed with error(-111): Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:361) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:772) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:749) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:616) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.handle(AbstractEpollChannel.java:477) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler$DefaultEpollIoRegistration.handle(EpollIoHandler.java:349) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.processReady(EpollIoHandler.java:548) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.run(EpollIoHandler.java:491) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1204) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-09-28T17:07:10.725+05:30 ERROR 31425 --- [api-gateway] [or-http-epoll-7] b.w.a.e.AbstractErrorWebExceptionHandler : [691293fc-9]  500 Server Error for HTTP POST "/api/v1/transactions/transfer"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed with error(-111): Connection refused: localhost/127.0.0.1:8082
+	Suppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter@553fbe94
+	*__checkpoint ⇢ HTTP POST "/api/v1/transactions/transfer" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed with error(-111): Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:361) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:772) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:749) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:616) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.handle(AbstractEpollChannel.java:477) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler$DefaultEpollIoRegistration.handle(EpollIoHandler.java:349) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.processReady(EpollIoHandler.java:548) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.run(EpollIoHandler.java:491) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1204) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-09-28T17:07:52.603+05:30 ERROR 31425 --- [api-gateway] [r-http-epoll-12] b.w.a.e.AbstractErrorWebExceptionHandler : [c0b0bda9-12]  500 Server Error for HTTP POST "/api/v1/transactions/transfer"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed with error(-111): Connection refused: localhost/127.0.0.1:8082
+	Suppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter@553fbe94
+	*__checkpoint ⇢ HTTP POST "/api/v1/transactions/transfer" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed with error(-111): Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:361) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:772) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:749) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:616) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.handle(AbstractEpollChannel.java:477) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler$DefaultEpollIoRegistration.handle(EpollIoHandler.java:349) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.processReady(EpollIoHandler.java:548) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.run(EpollIoHandler.java:491) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1204) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-09-28T17:09:30.670+05:30 ERROR 31425 --- [api-gateway] [or-http-epoll-6] b.w.a.e.AbstractErrorWebExceptionHandler : [011332c8-15]  500 Server Error for HTTP POST "/api/v1/transactions/transfer"
+
+io.netty.channel.AbstractChannel$AnnotatedConnectException: finishConnect(..) failed with error(-111): Connection refused: localhost/127.0.0.1:8082
+	Suppressed: The stacktrace has been enhanced by Reactor, refer to additional information below: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter@553fbe94
+	*__checkpoint ⇢ HTTP POST "/api/v1/transactions/transfer" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+Caused by: java.net.ConnectException: finishConnect(..) failed with error(-111): Connection refused
+	at io.netty.channel.unix.Errors.newConnectException0(Errors.java:166) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Errors.handleConnectErrno(Errors.java:131) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.unix.Socket.finishConnect(Socket.java:361) ~[netty-transport-native-unix-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.doFinishConnect(AbstractEpollChannel.java:772) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.finishConnect(AbstractEpollChannel.java:749) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.epollOutReady(AbstractEpollChannel.java:616) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.AbstractEpollChannel$AbstractEpollUnsafe.handle(AbstractEpollChannel.java:477) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler$DefaultEpollIoRegistration.handle(EpollIoHandler.java:349) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.processReady(EpollIoHandler.java:548) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.epoll.EpollIoHandler.run(EpollIoHandler.java:491) ~[netty-transport-classes-epoll-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:225) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:196) ~[netty-transport-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1204) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.2.17.Final.jar:4.2.17.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
