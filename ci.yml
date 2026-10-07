@@ -1,0 +1,106 @@
+name: Banking Microservices CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+
+  # ============================================================
+  # BUILD AND TEST ALL SPRING BOOT MICROSERVICES
+  # ============================================================
+
+  build-and-test:
+
+    name: Build & Test Microservices
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        service:
+          - account-service
+          - api-gateway
+          - fraud-detection-service
+          - notificaton-service
+          - payment-service
+          - transaction-service
+
+    steps:
+
+      # --------------------------------------------------------
+      # Checkout repository
+      # --------------------------------------------------------
+
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+
+      # --------------------------------------------------------
+      # Setup Java 17
+      # --------------------------------------------------------
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+
+      # --------------------------------------------------------
+      # Give Maven Wrapper execute permission
+      # --------------------------------------------------------
+
+      - name: Make Maven Wrapper executable
+        working-directory: ${{ matrix.service }}
+        run: chmod +x mvnw
+
+
+      # --------------------------------------------------------
+      # Build application
+      # --------------------------------------------------------
+
+      - name: Build ${{ matrix.service }}
+        working-directory: ${{ matrix.service }}
+        run: ./mvnw clean package -DskipTests=false
+
+
+      # --------------------------------------------------------
+      # Run tests explicitly
+      # --------------------------------------------------------
+
+      - name: Run tests
+        working-directory: ${{ matrix.service }}
+        run: ./mvnw test
+
+
+      # --------------------------------------------------------
+      # Upload test reports
+      # --------------------------------------------------------
+
+      - name: Upload test reports
+        if: always()
+
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: ${{ matrix.service }}-test-results
+
+          path: |
+            ${{ matrix.service }}/target/surefire-reports/**
+            ${{ matrix.service }}/target/site/**
+          
+          if-no-files-found: ignore
