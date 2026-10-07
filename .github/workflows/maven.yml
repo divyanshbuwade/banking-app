@@ -4,23 +4,13 @@ on:
   push:
     branches:
       - main
-      - master
-      - develop
 
   pull_request:
     branches:
       - main
-      - master
-      - develop
 
-permissions:
-  contents: read
 
 jobs:
-
-  # ==========================================================
-  # BUILD AND TEST MICROSERVICES
-  # ==========================================================
 
   build-and-test:
 
@@ -42,136 +32,62 @@ jobs:
 
     steps:
 
-      # ------------------------------------------------------
       # Checkout
-      # ------------------------------------------------------
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
 
-      # ------------------------------------------------------
-      # Java 17
-      # ------------------------------------------------------
-
-      - name: Setup JDK 17
+      # Java 21
+      - name: Setup JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
 
 
-      # ------------------------------------------------------
-      # Maven Wrapper permission
-      # ------------------------------------------------------
-
-      - name: Make Maven Wrapper executable
+      # Check project
+      - name: Check Maven project
         working-directory: ${{ matrix.service }}
-        run: chmod +x mvnw
+        run: |
+          echo "Building ${{ matrix.service }}"
+          java -version
+          mvn -version
+          test -f pom.xml
 
 
-      # ------------------------------------------------------
-      # Validate Maven project
-      # ------------------------------------------------------
-
-      - name: Validate Maven project
+      # Build and test
+      - name: Build and test
         working-directory: ${{ matrix.service }}
-        run: ./mvnw validate
+        run: mvn -B clean verify
 
 
-      # ------------------------------------------------------
-      # Run tests
-      # ------------------------------------------------------
-
-      - name: Run unit tests
-        working-directory: ${{ matrix.service }}
-        run: ./mvnw test
-
-
-      # ------------------------------------------------------
-      # Build application
-      # ------------------------------------------------------
-
-      - name: Build application
-        working-directory: ${{ matrix.service }}
-        run: ./mvnw clean package -DskipTests=false
-
-
-      # ------------------------------------------------------
       # Upload test reports
-      # ------------------------------------------------------
-
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
-
         with:
           name: ${{ matrix.service }}-test-results
-
           path: |
             ${{ matrix.service }}/target/surefire-reports/**
-            ${{ matrix.service }}/target/site/**
-
           if-no-files-found: ignore
 
 
-      # ------------------------------------------------------
       # Upload JAR
-      # ------------------------------------------------------
-
-      - name: Upload build artifact
+      - name: Upload JAR
         if: success()
         uses: actions/upload-artifact@v4
-
         with:
           name: ${{ matrix.service }}-jar
-
           path: |
             ${{ matrix.service }}/target/*.jar
-
           if-no-files-found: ignore
 
 
-  # ==========================================================
-  # DEPENDENCY SECURITY / GRAPH
-  # ==========================================================
-
-  dependency-check:
-
-    name: Maven Dependency Analysis
-
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-
-      - name: Setup JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-
-
-      # ------------------------------------------------------
-      # Dependency graph
-      # ------------------------------------------------------
-
-      - name: Update dependency graph
-        uses: advanced-security/maven-dependency-submission-action@v4
-
-
-  # ==========================================================
-  # DOCKER VALIDATION
-  # ==========================================================
-
+  # Docker validation
   docker-validation:
 
-    name: Validate Docker Compose
+    name: Docker Compose Validation
 
     runs-on: ubuntu-latest
 
@@ -184,25 +100,13 @@ jobs:
         uses: actions/checkout@v4
 
 
-      # ------------------------------------------------------
-      # Docker
-      # ------------------------------------------------------
-
-      - name: Setup Docker
+      - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-
-      # ------------------------------------------------------
-      # Validate Compose file
-      # ------------------------------------------------------
 
       - name: Validate Docker Compose
         run: docker compose config
 
-
-      # ------------------------------------------------------
-      # Build Docker services
-      # ------------------------------------------------------
 
       - name: Build Docker images
         run: docker compose build
