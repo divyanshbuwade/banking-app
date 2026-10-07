@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: payment-service
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
+      - org.springframework.boot.kafka.autoconfigure.KafkaAutoConfiguration
+      - org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/payment-db;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+
+app:
+  use-kafka: ${KAFKA_ENABLED:false}
+
+server:
+  port: 8083
+
+account:
+  service:
+    url: http://localhost:8081
+
+notification:
+  service:
+    url: http://localhost:8084
+
+razorpay:
+  key-id: ${RAZORPAY_KEY_ID:rzp_test_demo}
+  key-secret: ${RAZORPAY_KEY_SECRET:}
+  webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:}
+
+management:
+  health:
+    kafka:
+      enabled: false
+    mail:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,info
