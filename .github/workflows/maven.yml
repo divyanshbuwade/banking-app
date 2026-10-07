@@ -1,0 +1,208 @@
+name: Banking Microservices CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+
+permissions:
+  contents: read
+
+jobs:
+
+  # ==========================================================
+  # BUILD AND TEST MICROSERVICES
+  # ==========================================================
+
+  build-and-test:
+
+    name: ${{ matrix.service }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        service:
+          - account-service
+          - api-gateway
+          - fraud-detection-service
+          - notificaton-service
+          - payment-service
+          - transaction-service
+
+    steps:
+
+      # ------------------------------------------------------
+      # Checkout
+      # ------------------------------------------------------
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      # ------------------------------------------------------
+      # Java 17
+      # ------------------------------------------------------
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+
+      # ------------------------------------------------------
+      # Maven Wrapper permission
+      # ------------------------------------------------------
+
+      - name: Make Maven Wrapper executable
+        working-directory: ${{ matrix.service }}
+        run: chmod +x mvnw
+
+
+      # ------------------------------------------------------
+      # Validate Maven project
+      # ------------------------------------------------------
+
+      - name: Validate Maven project
+        working-directory: ${{ matrix.service }}
+        run: ./mvnw validate
+
+
+      # ------------------------------------------------------
+      # Run tests
+      # ------------------------------------------------------
+
+      - name: Run unit tests
+        working-directory: ${{ matrix.service }}
+        run: ./mvnw test
+
+
+      # ------------------------------------------------------
+      # Build application
+      # ------------------------------------------------------
+
+      - name: Build application
+        working-directory: ${{ matrix.service }}
+        run: ./mvnw clean package -DskipTests=false
+
+
+      # ------------------------------------------------------
+      # Upload test reports
+      # ------------------------------------------------------
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: ${{ matrix.service }}-test-results
+
+          path: |
+            ${{ matrix.service }}/target/surefire-reports/**
+            ${{ matrix.service }}/target/site/**
+
+          if-no-files-found: ignore
+
+
+      # ------------------------------------------------------
+      # Upload JAR
+      # ------------------------------------------------------
+
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: ${{ matrix.service }}-jar
+
+          path: |
+            ${{ matrix.service }}/target/*.jar
+
+          if-no-files-found: ignore
+
+
+  # ==========================================================
+  # DEPENDENCY SECURITY / GRAPH
+  # ==========================================================
+
+  dependency-check:
+
+    name: Maven Dependency Analysis
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+
+      # ------------------------------------------------------
+      # Dependency graph
+      # ------------------------------------------------------
+
+      - name: Update dependency graph
+        uses: advanced-security/maven-dependency-submission-action@v4
+
+
+  # ==========================================================
+  # DOCKER VALIDATION
+  # ==========================================================
+
+  docker-validation:
+
+    name: Validate Docker Compose
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - build-and-test
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      # ------------------------------------------------------
+      # Docker
+      # ------------------------------------------------------
+
+      - name: Setup Docker
+        uses: docker/setup-buildx-action@v3
+
+
+      # ------------------------------------------------------
+      # Validate Compose file
+      # ------------------------------------------------------
+
+      - name: Validate Docker Compose
+        run: docker compose config
+
+
+      # ------------------------------------------------------
+      # Build Docker services
+      # ------------------------------------------------------
+
+      - name: Build Docker images
+        run: docker compose build
